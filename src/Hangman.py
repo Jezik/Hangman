@@ -4,7 +4,8 @@ print("H A N G M A N")
 
 words_list = ["python", "java", "kotlin", "javascript"]
 rigth_answer = choice(words_list)
-word = input("Guess the world: ")
+answer_to_show = rigth_answer[:3] + "-" * (len(rigth_answer) - 3)
+word = input("Guess the world {}: ".format(answer_to_show))
 if word == rigth_answer:
     print("You survived!")
 else:
