@@ -12,23 +12,34 @@ def check_letter(letter, word, show_word):
             position_lst.append(index)
             index += 1
         for pos in position_lst:
-            show_word[pos] = letter
-        print()
+            if show_word[pos] == letter:
+                print("No improvements")
+                return False
+            show_word[pos] = letter 
+        return True
     else:
-        print("No such letter in the word\n")
+        print("No such letter in the word")
+        return False
 
 
 # Start of a program
-print("H A N G M A N\n")
+print("H A N G M A N")
 
 words_list = ["python", "java", "kotlin", "javascript"]
 rigth_answer = choice(words_list)
 answer_to_show = ["-"] * len(rigth_answer)
 
-for i in range(8):
+i = 0
+while i < 8:
+    print()
     print("".join(answer_to_show))
+    if "-" not in answer_to_show:
+        print("You guessed the word!\nYou survived!")
+        break
     letter = input("Input a letter: ")
-    check_letter(letter, rigth_answer, answer_to_show)
-
-print("Thanks for playing!")
-print("We'll see how well you did in the next stage")
+    if check_letter(letter, rigth_answer, answer_to_show):
+        continue
+    else:
+        i += 1
+        if i == 8:
+            print("You are hanged!")
